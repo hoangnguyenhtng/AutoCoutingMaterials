@@ -1,0 +1,35 @@
+experiment:
+  name: dinov2_cls_224
+  seed: 42
+
+model:
+  name: dinov2_vits14
+  feature_type: cls       # cls | patch_mean
+  image_size: 224         # thử thêm 336 và 448
+  device: auto
+  batch_size: 16
+
+preprocessing:
+  background_color: [255, 255, 255]
+  interpolation: bicubic
+
+retrieval:
+  aggregation: top_mean   # top_mean | max | centroid
+  references_per_code: 3
+  top_k: 5
+
+# Đây chỉ là giá trị khởi tạo để chạy pipeline. Phải hiệu chỉnh bằng validation
+# độc lập trước khi dùng trong vận hành.
+verification:
+  match_score: 0.75
+  mismatch_score: 0.75
+  unknown_score: 0.55
+  margin: 0.05
+
+paths:
+  manifest: data/manifests/local_data.csv
+  gallery: data/gallery/gallery.npz
+  predictions: outputs/predictions.csv
+  metrics: outputs/metrics.json
+  difficult_pairs: outputs/difficult_pairs.csv
+

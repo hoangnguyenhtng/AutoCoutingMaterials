@@ -1,0 +1,13 @@
+.venv/
+__pycache__/
+.pytest_cache/
+*.py[cod]
+*.egg-info/
+data/raw/*
+data/crops/*
+data/gallery/*
+outputs/*
+!data/raw/.gitkeep
+!data/crops/.gitkeep
+!data/gallery/.gitkeep
+!outputs/.gitkeep
